@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css">
+    </head>
+    
+    <body>
+        
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $.ajax({
+              url: './index_api.php',
+              dataType: 'json',
+              
+                  beforeSend: function(){
+              },
+              
+              success: function(data) {
+                var StrMsg='';
+                for (var i = 0; i < data.length; i++) {
+                   StrMsg+=data[i].name + ' - ' + data[i].age+'\n';
+                   console.log(data[i].name + ' - ' + data[i].age);
+                }
+                alert(StrMsg);
+              },
+              
+              error: function() {
+              },
+              
+              complete: function() {
+
+              }              
+            });            
+        </script>
+    </body>
+</html>
