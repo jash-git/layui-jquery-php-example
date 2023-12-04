@@ -4,6 +4,8 @@
 03_網站模板整合後端系統入門範例(php jquery ajax crud example) ~ https://github.com/jash-git/php-jquery-ajax-crud-example
     前端(JQuery Ajax)傳送數個單一變數值給後端(PHP)修改資料庫
     後端(PHP)將DB資料封裝成JSON字串傳送給前端(JQuery Ajax)解析顯示
+04_前端(JQuery Ajax)使用GET方式呼叫後端(PHP)產生log檔案和對應JSON字串並透過前端(JS)語法還原成對應物件最後使用'layer'的'msg'將數據顯示在畫面上
+    教學影片/01.mp4 有對應layer引入教學
 
 
 
