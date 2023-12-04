@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css">
+    </head>
+    
+    <body>
+        
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+			var myArray = [
+			  { name: 'value1', age: 'value2' },
+			  { name: 'value3', age: 'value4' }
+			];
+
+			// 將物件陣列轉換為 JSON 字串
+			var jsonData = JSON.stringify(myArray);
+		
+            $.ajax({			
+              url: './index_api.php',
+			  type: 'POST',			
+              dataType: 'json',			  
+              data: { JsonInput: jsonData },
+              
+                  beforeSend: function(){
+              },
+              
+              success: function(data) {
+			    console.log('資料成功傳送到 PHP！');
+                var StrMsg='';
+                for (var i = 0; i < data.length; i++) {
+                   StrMsg+=data[i].name + ' - ' + data[i].age+'\n';
+                   console.log(data[i].name + ' - ' + data[i].age);
+                }
+                alert(StrMsg);
+              },
+              
+              error: function() {
+              },
+              
+              complete: function() {
+
+              }              
+            });            
+        </script>
+    </body>
+</html>
