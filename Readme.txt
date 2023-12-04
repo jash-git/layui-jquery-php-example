@@ -1,7 +1,9 @@
 ﻿00_基本目錄結構
 01_前端(JQuery Ajax)接收由後端(PHP)的JSON字串並透過前端(JS)語法還原成對應物件 [php object array to jquery ajax]
 02_後端(PHP)接收由前端(JQuery Ajax)的JSON字串並透過後端(PHP)語法還原成對應物件 [jquery ajax object array to php]
-
+03_網站模板整合後端系統入門範例(php jquery ajax crud example) ~ https://github.com/jash-git/php-jquery-ajax-crud-example
+    前端(JQuery Ajax)傳送數個單一變數值給後端(PHP)修改資料庫
+    後端(PHP)將DB資料封裝成JSON字串傳送給前端(JQuery Ajax)解析顯示
 
 
 
