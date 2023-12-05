@@ -6,7 +6,17 @@
     後端(PHP)將DB資料封裝成JSON字串傳送給前端(JQuery Ajax)解析顯示
 04_前端(JQuery Ajax)使用GET方式呼叫後端(PHP)產生log檔案和對應JSON字串並透過前端(JS)語法還原成對應物件最後使用'layer'的'msg'將數據顯示在畫面上
     教學影片/01.mp4 有對應layer引入教學
-
+    教學PDF/01.pdf 有對應layer引入教學
+05_layui布局和網格系统
+    教學影片/02.mp4
+    教學PDF/02.pdf
+	
+	
+	
+	
+	
+	
+	
 
 
 
