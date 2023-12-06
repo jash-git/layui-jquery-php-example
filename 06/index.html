@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+            div {
+                height: 50px;
+            }
+            .layui-icon {
+                font-size : 50px;
+                color : #666;
+            }
+        </style>      
+    </head>
+    
+    <body> <!-- 顏色&圖示&動畫 -->
+
+		<div class="layui-bg-red">Layui</div>
+		<div class="layui-bg-orange">Layui</div>
+		<div class="layui-bg-blue">Layui</div>
+		<div class="layui-bg-cyan">Layui</div>
+
+		<div>
+			<i class="layui-icon layui-icon-rmb"></i>
+			<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>
+		</div>
+        
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>        
+            $.ajax({            
+              url: './index_api.php',
+              type: 'Get',                          
+                  beforeSend: function(){
+              },
+              
+              success: function(data) {
+                var StrMsg='';
+                for (var i = 0; i < data.length; i++) {
+                   StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                   console.log(data[i].state + ' - ' + data[i].times);
+                }
+                
+                // JS彈出視窗顯示資料- alert(StrMsg);
+                //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  
+                  layer.msg(StrMsg);
+                });
+                
+              },
+              
+              error: function() {
+              },
+              
+              complete: function() {
+
+              }              
+            });            
+        </script>
+    </body>
+</html>

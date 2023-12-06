@@ -9,8 +9,10 @@
     教學PDF/01.pdf 有對應layer引入教學
 05_layui布局和網格系统
     教學影片/02.mp4
+    教學影片/03.mp4
     教學PDF/02.pdf
-	
+06_layui顏色&圖示&動畫
+    教學PDF/03.pdf	
 	
 	
 	
