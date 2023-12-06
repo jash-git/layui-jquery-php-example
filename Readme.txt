@@ -23,9 +23,11 @@
 
 
 
-LayUI &amp; JQuery(Ajzx) &amp; PHP 練習 ~ XX<br />
+LayUI &amp; JQuery(Ajax) &amp; PHP 練習 ~ XX<br />
 <br />
 GITHUB: https://github.com/jash-git/layui-jquery-php-example/tree/main/XX<br />
+相關教學文件:<br />
+<br />
 <br />
 index.html<br />
 <br />
