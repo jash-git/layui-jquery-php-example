@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+        body {
+            margin: 20px;
+        }
+        </style>      
+    </head>
+    
+    <body> <!-- layui按鈕&按鈕群組&JQuery透過按鈕的id進行事件綁定與API呼叫 -->
+        <div>
+            <button class="layui-btn">按鈕</button>
+            <button class="layui-btn layui-btn-primary">按鈕</button>
+            <button class="layui-btn layui-btn-warm">按鈕</button>
+            <button class="layui-btn layui-btn-danger">按鈕</button>
+            <button class="layui-btn layui-btn-normal">按鈕</button>
+            <button class="layui-btn layui-btn-disabled">按鈕</button>
+        </div>
+
+        <br><br>
+
+        <div>
+            <button class="layui-btn">按鈕</button>
+            <button class="layui-btn layui-btn-lg">按鈕</button>
+            <button class="layui-btn layui-btn-sm">按鈕</button>
+            <button class="layui-btn layui-btn-xs">按鈕</button>
+        </div>
+
+        <br><br>
+
+        <div>
+            <button class="layui-btn layui-btn-fluid">按鈕</button>
+        </div>
+
+        <br><br>
+
+        <div>
+            <button class="layui-btn layui-btn-radius">按鈕</button>
+        </div>
+
+        <br><br>
+
+        <div>
+            <button class="layui-btn">
+                <i class="layui-icon layui-icon-user"></i>按鈕
+            </button>
+        </div>
+
+        <br><br>
+
+        <div class="layui-btn-group">
+            <button class="layui-btn" id="addbtn">新增</button>
+            <button class="layui-btn" id="delbtn">删除</button>
+            <button class="layui-btn" id="editbtn">修改</button>
+
+            <button class="layui-btn"><i class="layui-icon layui-icon-add-1"></i></button>
+            <button class="layui-btn"><i class="layui-icon layui-icon-delete"></i></button>
+            <button class="layui-btn"><i class="layui-icon layui-icon-edit"></i></button>
+        </div>
+
+        <br><br>
+
+        <div class="layui-btn-container">
+            <button class="layui-btn">按鈕</button>
+            <button class="layui-btn layui-btn-primary">按鈕</button>
+            <button class="layui-btn layui-btn-warm">按鈕</button>
+            <button class="layui-btn layui-btn-danger">按鈕</button>
+            <button class="layui-btn layui-btn-normal">按鈕</button>
+            <button class="layui-btn layui-btn-disabled">按鈕</button>
+        </div>
+        
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $(document).ready(function () {
+                CallAPI();
+            });    
+            
+            $("#addbtn").click(function(){
+                            layer.msg("addbtn點擊事件");
+            }); "addbtn點擊事件"
+
+            $("#delbtn").click(function(){        
+                layui.use(['layer', 'form'], function(){
+                  var layer = layui.layer
+                  ,form = layui.form;
+                  
+                  layer.msg("delbtn點擊事件");
+                });
+            });
+            
+            $("#editbtn").click(function(){
+                CallAPI();
+            });
+            
+            function CallAPI() {
+                $.ajax({            
+                  url: './index_api.php',
+                  type: 'Get',                          
+                      beforeSend: function(){
+                  },
+                  
+                  success: function(data) {
+                    var StrMsg='';
+                    for (var i = 0; i < data.length; i++) {
+                       StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                       console.log(data[i].state + ' - ' + data[i].times);
+                    }
+                    
+                    // JS彈出視窗顯示資料- alert(StrMsg);
+                    //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      
+                      layer.msg(StrMsg);
+                    });
+                    
+                  },
+                  
+                  error: function() {
+                  },
+                  
+                  complete: function() {
+
+                  }              
+                });              
+            }            
+          
+        </script>
+    </body>
+</html>

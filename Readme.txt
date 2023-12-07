@@ -13,7 +13,9 @@
     教學PDF/02.pdf
 06_layui顏色&圖示&動畫
     教學PDF/03.pdf	
-	
+07_layui按鈕&按鈕群組&JQuery透過按鈕的id進行事件綁定與API呼叫	
+    教學影片/04.mp4
+    教學PDF/04.pdf
 	
 	
 	
