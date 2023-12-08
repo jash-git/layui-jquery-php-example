@@ -23,8 +23,15 @@
 	
 
 
+相關網站
+    官方網站: https://layui.itze.cn/
+    官方GITHUB: https://github.com/layui/layui
+    官方Gitee: https://gitee.com/layui
 
-
+    官方線上教學文件:
+        https://layui.dev/docs/2/
+        https://layui.itze.cn/doc/index.html
+        https://layui.itze.cn/demo/index.html
 
 
 LayUI &amp; JQuery(Ajax) &amp; PHP 練習 ~ XX<br />
