@@ -33,6 +33,15 @@
         https://layui.itze.cn/doc/index.html
         https://layui.itze.cn/demo/index.html
 
+    layuimini官方網站: http://layuimini.99php.cn/docs/index.html
+	
+	
+	
+	
+	
+	
+	
+	
 
 LayUI &amp; JQuery(Ajax) &amp; PHP 練習 ~ XX<br />
 <br />
