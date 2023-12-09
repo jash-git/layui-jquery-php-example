@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+        body {
+            margin: 20px;
+        }
+        </style>      
+    </head>
+    
+    <body> <!-- layui導航列(工具列/功能表) -->
+<!-- 這是一個用於顯示導航列表的容器 -->
+        <ul class="layui-nav" lay-filter="nav-demo" id="layui-nav-top"></ul>
+        
+        <br><br>
+
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all">
+            <li class="layui-nav-item" lay-unselect><a href="#"><i class="layui-icon layui-icon-user"></i> 仪表图</a></li>
+            <li class="layui-nav-item" lay-unselect><a href="#">列表</a></li>
+            <li class="layui-nav-item" lay-unselect><a href="#">图文</a></li>
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">项目方案</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="#">驱动式</a></dd>
+                    <dd><a href="#">扁平式</a></dd>
+                    <dd><a href="#">龙虎式</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">项目方案</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="#">驱动式</a></dd>
+                    <dd><a href="#">扁平式</a></dd>
+                    <dd><a href="#">龙虎式</a></dd>
+                </dl>
+            </li>
+        </ul>
+        
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $(document).ready(function () {
+                CallAPI();
+                layui.use(['element'], () => {//layui導航列(工具列/功能表) 所需要的JS模塊
+                
+                })
+
+                $.ajax({
+                    url: 'layui-nav-top.php', // 替換為你的 PHP 文件的路徑
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data){
+                        // 將返回的數據動態生成導航列表
+                        var navContainer = $('#layui-nav-top');
+                        for(var i = 0; i < data.length; i++){
+                            navContainer.append('<li class="layui-nav-item"><a href="#">'+data[i].name+'</a></li>');
+                        }
+                        // 更新 LAYUI
+                        layui.nav('nav-demo');
+                    }
+                });                
+            });    
+                        
+            function CallAPI() {
+                $.ajax({            
+                  url: './index_api.php',
+                  type: 'Get',                          
+                      beforeSend: function(){
+                  },
+                  
+                  success: function(data) {
+                    var StrMsg='';
+                    for (var i = 0; i < data.length; i++) {
+                       StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                       console.log(data[i].state + ' - ' + data[i].times);
+                    }
+                    
+                    // JS彈出視窗顯示資料- alert(StrMsg);
+                    //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      
+                      layer.msg(StrMsg);
+                    });
+                    
+                  },
+                  
+                  error: function() {
+                  },
+                  
+                  complete: function() {
+
+                  }              
+                });              
+            }            
+          
+        </script>
+    </body>
+</html>
