@@ -21,7 +21,10 @@
     教學PDF/08.pdf
 08_01_PHP 控制 LAYUI 導航列表 [PHP 產生HTML]
 08_02_PHP 產生 LAYUI 導航列表 AJAX [PHP 產出JSON JQuery(Ajax)解析JSON JQuery產生HTML]
-	
+09_layui頁籤(選項卡/TABPAGE)
+    教學影片/06.mp4
+    教學PDF/09.pdf	
+09_01layui頁面布局(layout)+頁籤(選項卡/TABPAGE)+iframe
 	
 	
 
