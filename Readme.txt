@@ -16,8 +16,11 @@
 07_layui按鈕&按鈕群組&JQuery透過按鈕的id進行事件綁定與API呼叫	
     教學影片/04.mp4
     教學PDF/04.pdf
-	
-	
+08_layui導航列(工具列/功能表)
+    教學影片/05.mp4
+    教學PDF/08.pdf
+08_01_PHP 控制 LAYUI 導航列表 [PHP 產生HTML]
+08_02_PHP 產生 LAYUI 導航列表 AJAX [PHP 產出JSON JQuery(Ajax)解析JSON JQuery產生HTML]
 	
 	
 	
