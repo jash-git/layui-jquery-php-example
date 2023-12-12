@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+        body {
+            margin: 20px;
+        }
+        </style>      
+    </head>
+    <body>
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">网站设置</li>
+                <li>用户管理</li>
+                <li>权限分配</li>
+                <li>关于系统</li>
+            </ul>
+
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">内容1</div>
+                <div class="layui-tab-item">内容2</div>
+                <div class="layui-tab-item">内容3</div>
+                <div class="layui-tab-item">内容4</div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">网站设置</li>
+                <li>用户管理</li>
+                <li>权限分配</li>
+                <li>关于系统</li>
+            </ul>
+
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">内容1</div>
+                <div class="layui-tab-item">内容2</div>
+                <div class="layui-tab-item">内容3</div>
+                <div class="layui-tab-item">内容4</div>
+            </div>
+        </div>
+
+        <br>
+
+
+        <div class="layui-progress">
+            <div class="layui-progress-bar" lay-percent="10%"></div>
+        </div>
+
+        <br><br>
+
+
+        <div class="layui-progress" lay-showPercent="true">
+            <div class="layui-progress-bar" lay-percent="30%"></div>
+        </div>
+
+
+        <br><br>
+
+        <div class="layui-progress layui-progress-big" lay-showPercent="true">
+            <div class="layui-progress-bar layui-bg-blue" lay-percent="1/3"></div>
+        </div>
+
+        <br><br>
+
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this">网站设置</li>
+                <li>用户管理</li>
+                <li>权限分配</li>
+                <li>关于系统</li>
+            </ul>
+
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">内容1</div>
+                <div class="layui-tab-item">内容2</div>
+                <div class="layui-tab-item">内容3</div>
+                <div class="layui-tab-item">内容4</div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="layui-tab layui-tab-card" lay-allowClose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this">网站设置</li>
+                <li>用户管理</li>
+                <li>权限分配</li>
+                <li>关于系统</li>
+            </ul>
+
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">内容1</div>
+                <div class="layui-tab-item">内容2</div>
+                <div class="layui-tab-item">内容3</div>
+                <div class="layui-tab-item">内容4</div>
+            </div>
+        </div>
+                
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $(document).ready(function () {
+                CallAPI();
+                layui.use(['element'], () => {//layui導航列(工具列/功能表) 所需要的JS模塊
+                
+                })                
+            });    
+                        
+            function CallAPI() {
+                $.ajax({            
+                  url: './index_api.php',
+                  type: 'Get',                          
+                      beforeSend: function(){
+                  },
+                  
+                  success: function(data) {
+                    var StrMsg='';
+                    for (var i = 0; i < data.length; i++) {
+                       StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                       console.log(data[i].state + ' - ' + data[i].times);
+                    }
+                    
+                    // JS彈出視窗顯示資料- alert(StrMsg);
+                    //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      
+                      layer.msg(StrMsg);
+                    });
+                    
+                  },
+                  
+                  error: function() {
+                  },
+                  
+                  complete: function() {
+
+                  }              
+                });              
+            }            
+          
+        </script>
+    </body>
+</html>
