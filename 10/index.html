@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+        body {
+            margin: 20px;
+        }
+        </style>      
+    </head>
+    <body>
+        <table class="layui-table" lay-even lay-size="lg" lay-skin="nob">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>蜡笔小新</td>
+                    <td>xiaoxin@163.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>樱桃小丸子</td>
+                    <td>wanzi@163.com</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>孙悟空</td>
+                    <td>wukong@163.com</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>辉夜</td>
+                    <td>huiye@163.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <ul class="layui-timeline">
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-icon-circle layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">10月28日</h3>
+                    <p>这是一段故事~</p>
+                </div>
+            </li>
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-icon-circle layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">10月27日</h3>
+                    <p>这是一段故事~</p>
+                </div>
+            </li>
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-icon-circle layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">10月26日</h3>
+                    <p>这是一段故事~</p>
+                </div>
+            </li>
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-icon-circle layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">到底了</h3>
+                </div>
+            </li>
+        </ul>
+    
+                
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $(document).ready(function () {
+                CallAPI();
+                layui.use(['element'], () => {//layui導航列(工具列/功能表) 所需要的JS模塊
+                
+                })                
+            });    
+                        
+            function CallAPI() {
+                $.ajax({            
+                  url: './index_api.php',
+                  type: 'Get',                          
+                      beforeSend: function(){
+                  },
+                  
+                  success: function(data) {
+                    var StrMsg='';
+                    for (var i = 0; i < data.length; i++) {
+                       StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                       console.log(data[i].state + ' - ' + data[i].times);
+                    }
+                    
+                    // JS彈出視窗顯示資料- alert(StrMsg);
+                    //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      
+                      layer.msg(StrMsg);
+                    });
+                    
+                  },
+                  
+                  error: function() {
+                  },
+                  
+                  complete: function() {
+
+                  }              
+                });              
+            }            
+          
+        </script>
+    </body>
+</html>

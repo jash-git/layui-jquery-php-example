@@ -25,7 +25,13 @@
     教學影片/06.mp4
     教學PDF/09.pdf	
 09_01layui頁面布局(layout)+頁籤(選項卡/TABPAGE)+iframe
-	
+10_layui靜態表格和時間線
+    教學影片/07.mp4
+    教學PDF/05.pdf
+
+
+
+
 	
 
 
