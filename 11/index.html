@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+        body {
+            margin: 20px;
+        }
+        </style>      
+    </head>
+    <body>
+
+        <form action="" class="layui-form">
+            <!--输入框-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">输入框</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="请输入用户名">
+                </div>
+            </div>
+
+            <!--密码框-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">密码框</label>
+                <div class="layui-input-inline">
+                    <input type="password" class="layui-input" placeholder="请输入密码">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文本</div>
+            </div>
+
+            <!--下拉框-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">选择框</label>
+                <div class="layui-input-block">
+                    <select>
+                        <option value=""></option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">广州</option>
+                        <option value="3">深圳</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--复选框-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">复选框</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" title="写作">
+                    <input type="checkbox" title="阅读" checked>
+                    <input type="checkbox" title="发呆">
+                </div>
+            </div>
+
+            <!--开关-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">开关</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" name="switch" lay-skin="switch">
+                </div>
+            </div>
+
+
+            <!--单选框-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">单选框</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" title="男" checked>
+                    <input type="radio" name="sex" title="女">
+                </div>
+            </div>
+
+            <!--文本域-->
+            <div class="layui-form-item">
+                <label for="" class="layui-form-label">文本域</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" placeholder="请输入内容"></textarea>
+                </div>
+            </div>
+
+            <!--按钮-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+    
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $(document).ready(function () {
+                CallAPI();
+                layui.use(['element'], () => {//layui導航列(工具列/功能表) 所需要的JS模塊
+                
+                })                
+            });    
+                        
+            function CallAPI() {
+                $.ajax({            
+                  url: './index_api.php',
+                  type: 'Get',                          
+                      beforeSend: function(){
+                  },
+                  
+                  success: function(data) {
+                    var StrMsg='';
+                    for (var i = 0; i < data.length; i++) {
+                       StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                       console.log(data[i].state + ' - ' + data[i].times);
+                    }
+                    
+                    // JS彈出視窗顯示資料- alert(StrMsg);
+                    //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      
+                      layer.msg(StrMsg);
+                    });
+                    
+                  },
+                  
+                  error: function() {
+                  },
+                  
+                  complete: function() {
+
+                  }              
+                });              
+            }            
+          
+        </script>
+    </body>
+</html>
