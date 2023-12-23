@@ -1,0 +1,31 @@
+{
+  "title": "课程相册",
+  "id": 123,
+  "start": 0,
+  "data": [
+    {
+      "alt": "1",
+      "pid": 666,
+      "src": "img/1.png",
+      "thumb": ""
+    },
+    {
+      "alt": "2",
+      "pid": 666,
+      "src": "img/2.png",
+      "thumb": ""
+    },
+    {
+      "alt": "3",
+      "pid": 666,
+      "src": "img/3.png",
+      "thumb": ""
+    },
+    {
+      "alt": "4",
+      "pid": 666,
+      "src": "img/4.png",
+      "thumb": ""
+    }
+  ]
+}

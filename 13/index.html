@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="layui/css/layui.css"><!-- layui css 文件 -->
+        <style><!-- class css 高度設定-->
+        body {
+            margin: 20px;
+        }
+        </style>      
+    </head>
+    <body>
+        <button class="layui-btn" id="btn-msg">msg / 提示</button>
+        <button class="layui-btn" id="btn-open">open / 核心</button>
+        <button class="layui-btn" id="btn-alert">alert / 弹窗</button>
+        <button class="layui-btn" id="btn-confirm">confirm / 询问</button>
+        <button class="layui-btn" id="btn-prompt">prompt / 输入</button>
+        <button class="layui-btn" id="btn-tab">tab / 切换</button>
+        <button class="layui-btn" id="btn-photos">photos / 图片</button>
+        <button class="layui-btn" id="btn-tips">tips / 吸附</button>
+    
+        <!-- body 末尾放置所有JS -->
+        <script src="./js/jquery-3.7.1.js"></script>
+        <script src="layui/layui.js"></script>    
+        <script>
+            $(document).ready(function () {
+                CallAPI();
+                layui.use(['layer','element'], () => {//layui彈出層
+                    const layer   = layui.layer
+                    
+                    $('#btn-msg').click(() => {
+                        layer.msg('提示')
+                    })
+
+                    $('#btn-open').click(() => {
+                        layer.open({
+                            title : '标题',
+                            content : '内容~'
+                        })
+                    })
+
+                    $('#btn-alert').click(() => {
+                        layer.alert('弹窗')
+                    })
+
+                    $('#btn-confirm').click(() => {
+                        layer.confirm('询问')
+                    })
+
+                    $('#btn-prompt').click(() => {
+                        layer.prompt({
+                            title : '输入'
+                        }, (content) => {
+                            alert(content)
+                        })
+                    })
+
+                    $('#btn-tab').click(() => {
+                        layer.tab({
+                            area : ['500px', '350px'],
+                            tab : [{
+                                title : '标题1',
+                                content : '内容1~'
+                            }, {
+                                title : '标题2',
+                                content : '内容2~'
+                            }, {
+                                title : '标题3',
+                                content : '内容3~'
+                            }, ]
+                        })
+                    })
+
+
+                    $('#btn-photos').click(() => {
+                        $.getJSON('photos.json', (json) => {
+                            layer.photos({
+                                photos : json,
+                                anim : 6
+                            })
+                        })
+                    })
+                    
+                    layer.open({
+                        type : 2,
+                        content : ['http://jashliao.eu', 'no']
+                    })
+
+
+                    $('#btn-tips').click(() => {
+                        layer.tips('吸附', $('#btn-tips'))
+                    })
+                             
+                })                
+            });    
+                        
+            function CallAPI() {
+                $.ajax({            
+                  url: './index_api.php',
+                  type: 'Get',                          
+                      beforeSend: function(){
+                  },
+                  
+                  success: function(data) {
+                    var StrMsg='';
+                    for (var i = 0; i < data.length; i++) {
+                       StrMsg+=data[i].state + ' - ' + data[i].times+'\n';
+                       console.log(data[i].state + ' - ' + data[i].times);
+                    }
+                    
+                    // JS彈出視窗顯示資料- alert(StrMsg);
+                    //https://www.layuiweb.com/doc/index.htm ~ layer msg 顯示資料，藉此判斷可以使用layer
+                    layui.use(['layer', 'form'], function(){
+                      var layer = layui.layer
+                      ,form = layui.form;
+                      
+                      layer.msg(StrMsg);
+                    });
+                    
+                  },
+                  
+                  error: function() {
+                  },
+                  
+                  complete: function() {
+
+                  }              
+                });              
+            }            
+          
+        </script>
+    </body>
+</html>
